@@ -56,7 +56,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 }
 </style>
 <body class="w3-light-grey">
-<div class="w3-top">
+<div class="w3-top" style="z-index:99999;">
   <div class="w3-row w3-amber w3-padding-4">
     <div class="w3-quarter" style="margin:4px 0 6px 0"><a href='javascript:void(0);'><img src='../images/loooogo.png' width="80" class="w3-circle" style="border:2px solid white;position:absolute;left:90px" alt='Pantao Hospital'></a></div>
     <div class="w3-rest w3-margin-top w3-wide w3-hide-medium w3-hide-small"><div class="w3-right w3-animate-right"><span class="fa fa-ambulance fa-2x"></span><b>Lying In:</b> <span>Record Management System</span></div></div>
@@ -75,7 +75,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 
 
 <!-- Nurses Forms --->
-<div class="w3-container" style="margin-left:0px;margin-top:9%;">
+<div class="w3-container" style="margin-left:0px;margin-top:7%;">
 
 	<div class="w3-container">
 		<div class="w3-white" id="calendar_container"  style="margin-top:2%;padding-bottom:20px;border:1px solid #ddd">
