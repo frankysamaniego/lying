@@ -1,9 +1,7 @@
 <?php
 	include("../include/dbcon.php");
-	if($_SESSION['ACCESS_TYPE'] != 1){
-		header("location:../redirecter.php");
-	}else{
-		
+	if(!isset($_SESSION['loggedIn'])){
+		header("location:../index.php");
 	}
 ?>
 

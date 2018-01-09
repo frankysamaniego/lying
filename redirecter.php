@@ -1,15 +1,13 @@
 <?php
 	session_start();
-	if($_SESSION['ACCESS_TYPE'] == 1){
+	if($_SESSION['accountType'] == 1){
 		header("location:admin/");
-	}else if($_SESSION['ACCESS_TYPE'] == 2){
-		header("location:research/");
-	}else if($_SESSION['ACCESS_TYPE'] == 3){
-		header("location:panel/");
-	}else if($_SESSION['ACCESS_TYPE'] == 3){
-		header("location:adviser/");
+	}else if($_SESSION['accountType'] == 2){
+		header("location:nurse/");
+	}else if($_SESSION['accountType'] == 3){
+		header("location:cashier/");
 	}else{
-		header("location:index.php");
+		//header("location:index.php");
 	}
 
 ?>

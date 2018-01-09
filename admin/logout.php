@@ -1,5 +1,7 @@
 <?php
 session_start();
-unset($_SESSION['ACCESS_TYPE']);
+session_destroy();
+unset($_SESSION['accountType']);
+unset($_SESSION['loggedIn']);
 header("location: ../");
 die();
