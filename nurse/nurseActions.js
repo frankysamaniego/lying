@@ -11,3 +11,17 @@ $("#search").keyup(function() {
         });
     });
 });
+
+
+function patientInfoSubmit(){
+	var patientData = $("#patientDetails").serializeArray();
+	//console.log(patientData);
+	$.ajax({
+		url:'nurseProcess.php',
+		type:'post',
+		data:patientData,
+		success:function(data){
+			console.log(data);
+		}
+	});
+}

@@ -2,6 +2,7 @@
 	<h2><span class='fa fa-plus'></span> New Patient Record<hr/></h2>
 	<div class="w3-container">
 		<div class="w3-row">
+			<form action="javascript:void(0);" method="post" id="patientDetails" enctype="multipart/form-data" onsubmit="return patientInfoSubmit()">
 			<fieldset>
 				<legend><h4><b>Patient Information</b></h4></legend>
 				<div class="w3-container">
@@ -74,11 +75,11 @@
 							</td>
 							<td style="text-align:right !important;">RELIGION:</td>
 							<td>
-								<input type="number" name="husbandReligion" class="w3-input w3-border w3-small" id="husbandReligion" placeholder="Husband Religion" required>
+								<input type="text" name="husbandReligion" class="w3-input w3-border w3-small" id="husbandReligion" placeholder="Husband Religion" required>
 							</td>
 							<td style="text-align:right !important;">OCCUPATION:</td>
 							<td>
-								<input type="number" name="husbandOccupation" class="w3-input w3-border w3-small" id="husbandOccupation" placeholder="Husband Occupation" required>
+								<input type="text" name="husbandOccupation" class="w3-input w3-border w3-small" id="husbandOccupation" placeholder="Husband Occupation" required>
 							</td>
 						</tr>
 						<tr>
@@ -88,7 +89,7 @@
 							</td>
 							<td style="text-align:right !important;">RELATION TO PATIENT:</td>
 							<td>
-								<input type="number" name="informatRelation" class="w3-input w3-border w3-small" id="informatRelation" placeholder="Relation to patient" required>
+								<input type="text" name="informatRelation" class="w3-input w3-border w3-small" id="informatRelation" placeholder="Relation to patient" required>
 							</td>
 						</tr>
 						<tr>
@@ -122,8 +123,8 @@
 							</td>
 							<td>CHIEF COMPLAINT:</td>
 							<td>
-								<input type="checkbox" name="chiefComplaint[]" class="w3-check w3-border w3-small" id="chiefComplaint[]" placeholder="Admission Time" required> Labor Pain
-								<input type="checkbox" name="chiefComplaint[]" class="w3-check w3-border w3-small" id="chiefComplaint[]" placeholder="Admission Time" required> Viginal Bleeding
+								<input type="checkbox" name="chiefComplaint[]" class="w3-check w3-border w3-small" id="chiefComplaint[]" value="Labor Pain"  placeholder="Admission Time" > Labor Pain
+								<input type="checkbox" name="chiefComplaint[]" value="Viginal Bleeding" class="w3-check w3-border w3-small" id="chiefComplaint[]" placeholder="Admission Time" > Viginal Bleeding
 							</td>
 						</tr>
 						<tr>
@@ -191,16 +192,16 @@
 						</tr>
 						<tr>
 							<td>
-								<input type="checkbox" name="pastMedHist[]" class="w3-check w3-border w3-small" id="pastMedHist[]" value="Hypertension" placeholder="Admission Time" required> Hypertension
+								<input type="checkbox" name="pastMedHist[]" class="w3-check w3-border w3-small" id="pastMedHist[]" value="Hypertension" placeholder="Admission Time" > Hypertension
 							</td>
 							<td>
-								<input type="checkbox" name="pastMedHist[]" class="w3-check w3-border w3-small" id="pastMedHist[]" value="Heart Disease" placeholder="Admission Time" required> Heart Disease
+								<input type="checkbox" name="pastMedHist[]" class="w3-check w3-border w3-small" id="pastMedHist[]" value="Heart Disease" placeholder="Admission Time"> Heart Disease
 							</td>
 							<td style="text-align:right !important;">
 								OTHERS:
 							</td>
 							<td>
-								<input type="text" name="otherMedHis" class="w3-input w3-border w3-small" id="otherMedHis" placeholder="Please specify..." required>
+								<input type="text" name="otherMedHis" class="w3-input w3-border w3-small" id="otherMedHis" placeholder="Please specify...">
 							</td>
 						</tr>
 					</table>
@@ -261,9 +262,280 @@
 							</td>
 						</tr>
 					</table>
+					<div class="w3-row">
+						<div class="w3-half w3-padding">
+							<span>ADMITTING DIAGNOSIS:</span>
+							<textarea id="admittingDiagnosis" class="admitting" name="admittingDiagnosis"></textarea>
+						</div>
+						<div class="w3-half w3-padding">
+							<span>FINAL DIAGNOSIS:</span>
+							<textarea id="finalDiagnosis" class="admitting" name="finalDiagnosis"></textarea>
+						</div>
 					</div>
-				</div>
-			</fieldset>
+					<div class="w3-row">
+						<strong><center>RAPID ASSESMENT</center></strong>
+					</div>
+					<table border="0" class="w3-table" cellspacing="5px" style="vertical-align: middle !important;max-width:50%;" align="center">
+					
+						<tr>
+							<td>
+								<input type="checkbox" name="rapidAssesment[]" class="w3-check w3-border w3-small" id="rapidAssesment[]" value="Vaginal Bleeding" > Vaginal Bleeding
+							</td>
+							<td>
+								<input type="checkbox" name="rapidAssesment[]" class="w3-check w3-border w3-small" id="rapidAssesment[]" value="Severe Pallor" > Severe Pallor
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" name="rapidAssesment[]" class="w3-check w3-border w3-small" id="rapidAssesment[]" value="Convulsion" > Convulsion
+							</td>
+							<td>
+								<input type="checkbox" name="rapidAssesment[]" class="w3-check w3-border w3-small" id="rapidAssesment[]" value="Epigastric/Abdominal Pail" > Epigastric/Abdominal Pail
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" name="rapidAssesment[]" class="w3-check w3-border w3-small" id="rapidAssesment[]" value="Looking very ill" > Looking very ill
+							</td>
+							<td>
+								<input type="checkbox" name="rapidAssesment[]" class="w3-check w3-border w3-small" id="rapidAssesment[]" value="Severe Head ache" > Severe Head ache
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" name="rapidAssesment[]" class="w3-check w3-border w3-small" id="rapidAssesment[]" value="Dificulty of Breathing" > Dificulty of Breathing
+							</td>
+							<td>
+								<input type="checkbox" name="rapidAssesment[]" class="w3-check w3-border w3-small" id="rapidAssesment[]" value="Blurred Vision" > Blurred Vision
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<input type="checkbox" name="rapidAssesment[]" class="w3-check w3-border w3-small" id="rapidAssesment[]" value="Unconscious" > Unconscious
+							</td>
+							<td>
+								<input type="checkbox" name="rapidAssesment[]" class="w3-check w3-border w3-small" id="rapidAssesment[]" value="Blurred Vision" > Fever > 38C
+							</td>
+						</tr>
+						<tr>
+							<td style="vertical-align:top">
+								<input type="checkbox" name="rapidAssesment[]" class="w3-check w3-border w3-small" id="rapidAssesment[]" value="In Labor" > In Labor
+							</td>
+							<td>
+								<input type="checkbox" name="rapidAssesment[]" class="w3-check w3-border w3-small" id="rapidAssesment[]" value="rapidAssesmentOthers" > Others 
+								<input type="text" name="rapidAssesmentOthers1" class="w3-input w3-border w3-small" id="rapidAssesmentOthers1" placeholder="Please specify...">
+								<input type="hidden" value="saveFromNewPatient" id="saveFromNewPatient" name="saveFromNewPatient" />
+							</td>
+						</tr>
+					</table>
+					<div class="w3-container w3-center">
+						<button class="w3-btn w3-green"><i class="fa fa-check"></i>Proceed</button>
+					</div>
+					</div>
+				</fieldset>
+				</form>
+			</div>
+			
+			
+			<!--------------------- MATERNAL SERVICE RECORD ---------------------->
+			<!--------------------- MATERNAL SERVICE RECORD ---------------------->
+			<!--------------------- MATERNAL SERVICE RECORD ---------------------->
+			<!--------------------- MATERNAL SERVICE RECORD 
+			
+			<div class="w3-row">
+				<fieldset>
+					<div class="w3-container">
+						<legend><h4><b>MATERNAL SERVICE RECORD</b></h4></legend>
+						<div class="w3-half w3-padding">
+							<table border="0" class="w3-table" cellspacing="5px" style="vertical-align: middle !important;max-width:100%;">
+								<tr>
+									<td>LMP:</td>
+									<td>
+										<input type="date" name="lmpMaternal" class="w3-input w3-border w3-small" id="lmpMaternal" required>
+									</td>
+									<td>EDC:</td>
+									<td>
+										<input type="date" name="edcMaternal" class="w3-input w3-border w3-small" id="edcMaternal" required>
+									</td>
+								</tr>
+							</table>
+							<div class="w3-row">
+								<span><b>OBJECTIVE OBSERVATION:</b></span>
+								<table border="0" class="w3-table" cellspacing="5px" style="vertical-align: middle !important;max-width:100%;">
+									<tr>
+										<td>BP:</td>
+										<td>
+											<input type="text" name="ooBp" class="w3-input w3-border w3-small" id="ooBp" placeholder="Blood Pressure" required>
+										</td>
+										<td>TEMPERATURE:</td>
+										<td>
+											<input type="text" name="ooTemp" class="w3-input w3-border w3-small" id="ooTemp" placeholder="Temperature in C" required>
+										</td>
+									</tr>
+									<tr>
+										<td>WEIGHT:</td>
+										<td>
+											<input type="text" name="ooWeight" class="w3-input w3-border w3-small" id="ooWeight" placeholder="Weight in Kg" required>
+										</td>
+										<td>HEENT:</td>
+										<td>
+											<input type="text" name="ooHeent" class="w3-input w3-border w3-small" id="ooHeent" placeholder="Heent" required>
+										</td>
+									</tr>
+									<tr>
+										<td>BREAST:</td>
+										<td>
+											<input type="text" name="ooBreast" class="w3-input w3-border w3-small" id="ooBreast" placeholder="Breast" required>
+										</td>
+										<td>CHEST/HEART:</td>
+										<td>
+											<input type="text" name="ooChestHeart" class="w3-input w3-border w3-small" id="ooChestHeart" placeholder="Chest / Heart" required>
+										</td>
+									</tr>
+									<tr>
+										<td>ABDOMEN:</td>
+										<td>
+											<input type="text" name="ooAbdomen" class="w3-input w3-border w3-small" id="ooAbdomen" placeholder="Abdomen" required>
+										</td>
+										<td>FUNDIC HEIGHT:</td>
+										<td>
+											<input type="text" name="ooFundicHeight" class="w3-input w3-border w3-small" id="ooFundicHeight" placeholder="Fundic Height in cm" required>
+										</td>
+									</tr>
+									<tr>
+										<td>AOG IN WEEK:</td>
+										<td>
+											<input type="text" name="ooAog" class="w3-input w3-border w3-small" id="ooAog" placeholder="AOG in Week" required>
+										</td>
+										<td>FETAL HEART TONE:</td>
+										<td>
+											<input type="text" name="ooFetal" class="w3-input w3-border w3-small" id="ooFetal" placeholder="Fetal heart tone/min" required>
+										</td>
+									</tr>
+									<tr>
+										<td>LOC.:</td>
+										<td colspan="3">
+											<input type="text" name="ooLoc" class="w3-input w3-border w3-small" id="ooLoc" placeholder="Loc" required>
+										</td>
+										
+									</tr>
+									<tr>
+										<td colspan="4"><span>Leopold's Maneuver:</span><td>
+									</tr>
+									<tr>
+										<td>L1:</td>
+										<td>
+											<input type="text" name="ooL1" class="w3-input w3-border w3-small" id="ooL1" placeholder="L1" required>
+										</td>
+										<td>L3:</td>
+										<td>
+											<input type="text" name="ooL3" class="w3-input w3-border w3-small" id="ooL3" placeholder="L3" required>
+										</td>
+									</tr>
+									<tr>
+										<td>L2:</td>
+										<td>
+											<input type="text" name="ooL2" class="w3-input w3-border w3-small" id="ooL2" placeholder="L2" required>
+										</td>
+										<td>L4:</td>
+										<td>
+											<input type="text" name="ooL4" class="w3-input w3-border w3-small" id="ooL4" placeholder="L4" required>
+										</td>
+									</tr>
+									<tr>
+										<td>URINE ACTIVITY:</td>
+										<td colspan='3'>
+											<input type="text" name="ooUrineAct" class="w3-input w3-border w3-small" id="ooUrineAct" placeholder="Urine Activity" required>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="4"><span>Pelvic Examination:</span><td>
+									</tr>
+									<tr>
+										<td>PERINEUM:</td>
+										<td>
+											<input type="text" name="ooPerinerum" class="w3-input w3-border w3-small" id="ooPerinerum" placeholder="Perinerum" required>
+										</td>
+										<td>VARICOSITIES:</td>
+										<td>
+											<input type="text" name="ooVaricosities" class="w3-input w3-border w3-small" id="ooVaricosities" placeholder="Varicosities" required>
+										</td>
+									</tr>
+									<tr>
+										<td>WARTS/ECZEMA:</td>
+										<td colspan='3'>
+											<input type="text" name="ooWartsEcs" class="w3-input w3-border w3-small" id="ooWartsEcs" placeholder="Warts / Eczema" required>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+						<div class="w3-half w3-padding">
+							<div class="w3-row">
+								<span>SUBJECTIVE OBSERVATION:</span>
+								<textarea id="subjectiveObservation" class="admitting" name="subjectiveObservation"></textarea>
+							</div>
+							<div class="w3-row">
+								<span>SPECULUM EXAMINATION:(if necessary)</span>
+								<table border="0" class="w3-table" cellspacing="5px" style="vertical-align: middle !important;max-width:100%;">
+									<tr>
+										<td>PURULENT DISCHARGE:</td>
+										<td>
+											<input type="text" name="specPurulent" class="w3-input w3-border w3-small" id="specPurulent" placeholder="Purulent Discharge" required>
+										</td>
+										<td>WATERY DISCHARGE:</td>
+										<td>
+											<input type="text" name="specWatery" class="w3-input w3-border w3-small" id="specWatery" placeholder="Watery Discharge" required>
+										</td>
+									</tr>
+									<tr>
+										<td>BLEEDING:</td>
+										<td>
+											<input type="text" name="specBleeding" class="w3-input w3-border w3-small" id="specBleeding" placeholder="Bleeding" required>
+										</td>
+										<td>OTHERS:</td>
+										<td>
+											<input type="text" name="specOthers" class="w3-input w3-border w3-small" id="specOthers" placeholder="Please specify" required>
+										</td>
+									</tr>
+									<tr>
+										<td colspan="4"><span>Internal Examination:(if necessary)</span><td>
+									</tr>
+									<tr>
+										<td>CERVICAL DILATATION:</td>
+										<td colspan="3">
+											<input type="text" name="specCervicalDil" class="w3-input w3-border w3-small" id="specCervicalDil" placeholder="Cervical Dilatation" required>
+										</td>
+									</tr>
+									<tr>
+										<td>PRESENTING PART:</td>
+										<td colspan="3">
+											<input type="text" name="specPresenting" class="w3-input w3-border w3-small" id="specPresenting" placeholder="Presenting part" required>
+										</td>
+									</tr>
+									<tr>
+										<td>BOW (BAG OF WATER):</td>
+										<td colspan="3">
+											<input type="text" name="specBow" class="w3-input w3-border w3-small" id="specBow" placeholder="Bag of water" required>
+										</td>
+									</tr>
+									<tr>
+										<td>URINARY TRACT:UTI</td>
+										<td colspan="3">
+											<input type="text" name="specUti" class="w3-input w3-border w3-small" id="specUti" placeholder="UTI" required>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</div>
+					</div>
+				</fieldset>
+			</div>
+			
+			<!--------------------- MATERNAL SERVICE RECORD ---------------------->
+			<!--------------------- MATERNAL SERVICE RECORD ---------------------->
+			<!--------------------- MATERNAL SERVICE RECORD ---------------------->
+			<!--------------------- MATERNAL SERVICE RECORD ---------------------->
 		</div>
 	</div>
 </div>

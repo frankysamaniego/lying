@@ -33,8 +33,8 @@ $(document).ready(function() {
 		   { orderable: false, targets: [-2,-1] }
 		]
 	});
-	$('#res_desc').summernote({
-		height: 200,
+	$('.admitting').summernote({
+		height: 100,
 		 toolbar: [
 		  ['style', ['bold', 'italic', 'underline', 'clear']],
 		  ['font', ['strikethrough']],

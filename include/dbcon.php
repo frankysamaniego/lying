@@ -21,4 +21,14 @@
 			default:$usertype = "Unknown";return $usertype;
 		}
 	}
+	
+	
+	
+	
+	function getLastId($x){
+		$sql =mysql_query("SELECT * FROM `".$x."` ORDER BY `id` DESC LIMIT 1");
+		while($row = mysql_fetch_assoc($sql)){
+			return $row['id'];
+		}
+	}
 ?>
