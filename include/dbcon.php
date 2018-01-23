@@ -31,4 +31,40 @@
 			return $row['id'];
 		}
 	}
+	
+	
+	
+	
+	function getStatus($x){
+		$re = "";
+		switch($x){
+			case 1 : $re = "Admitted";
+				return $re;
+				break;
+			case 2 : $re = "Discharged";
+				return $re;
+				break;
+			default: $re = "Unknown";
+				return $re;
+				break;
+		}
+	}
+	
+	
+	
+	
+	function getAdmittingLastId($x){
+		$sql = mysql_query("SELECT * FROM `admittingdetails` WHERE `patientId`='$x' ORDER BY `id` DESC LIMIT 1");
+		while($row = mysql_fetch_assoc($sql)){
+			return $row['id'];
+		}
+	}
+	
+	
+	function getLastMaternalVisit($x,$y){
+		$sql = mysql_query("SELECT * FROM `maternalvisits` WHERE `admittingDetailsId`='$x' AND `patientId`='$y' ORDER BY `id` DESC LIMIT 1");
+		while($row = mysql_fetch_assoc($sql)){
+			return $row['id'];
+		}
+	}
 ?>

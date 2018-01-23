@@ -83,6 +83,10 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 					require('newPatient.php');
 				}else if(isset($_GET['listPatient'])){
 					require('listPatient.php');
+				}else if(isset($_GET['maternalRecord'])){
+					require("maternalRecord.php");
+				}else if(isset($_GET['medication'])){
+					require("medication.php");
 				}?>
 		</div>
 	</div>
