@@ -163,4 +163,109 @@
 			}
 		}
 	}
+	
+	
+	
+	
+	if(isset($_POST['medType'])){
+		//echo "<pre>",print_r($_POST),"</pre>";
+		$medType = $_POST['medType'];
+		$medShift = $_POST['medShift'];
+		$medDate = $_POST['medDate'];
+		$medication = $_POST['medication'];
+		$medPatientId = $_POST['medPatientId'];
+		$medAdmitId = $_POST['medAdmitId'];
+		
+		//$check = mysql_num_rows(mysql_query("SELECT * FROM `medications` WHERE `medicationDate`='$medDate' AND `medicationType`='$'"))
+		$insertMedication = mysql_query("INSERT INTO `medications` (`medication`,`medicationType`,`medicationDate`,`shift`,`admitId`,`patientId`) VALUES ('$medication','$medType','$medDate','$medShift','$medAdmitId','$medPatientId')");
+		if($insertMedication){
+			echo "SUCCESS";
+		}else{
+			echo mysql_error();
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	if(isset($_POST['getShiftsType'])){
+		//print_r($_POST);
+		$getShiftsType = $_POST['getShiftsType'];
+		$readingDateTpr = $_POST['readingDateTpr'];
+		$patientId = $_POST['patientIdTpr'];
+		$tprShiftArr = array("12AM","4AM","8AM","12PM","4PM","8PM");
+		$bpusShifArr = array("6AM-6PM","6PM-6AM");
+		if($getShiftsType == 'BP' || $getShiftsType == 'S' || $getShiftsType == 'U'){
+			//echo "BPUS";
+			//check tprSheet table if data is 
+			$sql = mysql_query("SELECT * FROM `bpus` WHERE `dateOfReading`='$readingDateTpr' AND `patientId`='$patientId' AND `tprType`='$getShiftsType'");
+			$num = mysql_num_rows($sql);
+			
+			if($num > 0){
+				while($row = mysql_fetch_assoc($sql)){
+					$shift[] = $row['shift'];
+				}
+				$diff =array_diff($bpusShifArr,$shift);
+				foreach($diff as $key=>$value){
+					echo "<label>Select Shift</label>";
+					echo "<select class='w3-input w3-border' name='tprShifts' id='tprShifts'>";
+						echo "<option>".$value."</option>";
+					echo "</select>";
+				}
+			}else{
+				echo "<label>Select Shift:</label>";
+					echo "<select class='w3-input w3-border'>";
+						echo "<option>6AM-6PM</option>";
+						echo "<option>6PM-6AM</option>";
+					echo "</select>";
+			}
+			
+			
+		}else{
+			$sql = mysql_query("SELECT * FROM `rpt` WHERE `dateOfReading`='$readingDateTpr' AND `patientId`='$patientId' AND `tprType`='$getShiftsType'");
+			$num = mysql_num_rows($sql);
+			if($num > 0){
+				while($row = mysql_fetch_assoc($sql)){
+					$shift[] = $row['shift'];
+				}
+				$diff =array_diff($tprShiftArr,$shift);
+				foreach($diff as $key=>$value){
+					echo "<label>Select Shift</label>";
+					echo "<select class='w3-input w3-border'>";
+						echo "<option>".$value."</option>";
+					echo "</select>";
+				}
+			}else{
+				echo "<label>Select Shift:</label>";
+					echo "<select class='w3-input w3-border'  name='tprShifts' id='tprShifts'>";
+					foreach($tprShiftArr as $key => $value){
+						echo "<option>".$value."</option>";
+					}
+					echo "</select>";
+			}
+		}
+		echo "<label>Reading:</label>";
+		echo "<input type='text' class='w3-input w3-border' name='readingTpr' id='readingTpr' required />";
+		$checkTpr = mysql_query("SELECT * FROM `tpr` WHERE `dateOfReading`='$readingDateTpr' AND `patientId`='$patientId'");
+		$tprNum = mysql_num_rows($checkTpr);
+		if($tprNum > 0){
+			
+		}else{
+			echo "<label>Weight:</label>";
+			echo "<input type='text' class='w3-input w3-border' name='tprWeight' id='tprWeight' required />";
+			echo "<label>Height:</label>";
+			echo "<input type='text' class='w3-input w3-border' name='tprHeight' id='tprHeight' required />";
+		}
+	}
+	
+	
+	
+	
+	
+	
+	
+	
 ?>

@@ -87,6 +87,8 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 					require("maternalRecord.php");
 				}else if(isset($_GET['medication'])){
 					require("medication.php");
+				}else if(isset($_GET['tpr'])){
+					require("tpr.php");
 				}?>
 		</div>
 	</div>
