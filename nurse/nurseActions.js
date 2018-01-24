@@ -108,4 +108,16 @@ function getShifts(){
 
 
 
-function
+function submitTpr(){
+	var tprDetails = $("#tprForm").serializeArray();
+	$.ajax({
+		url:'nurseProcess.php',
+		type:'post',
+		data:tprDetails,
+		success:function(data){
+			console.log(data);
+			alert('Record Successfully Added!');
+			window.location.reload();
+		}
+	});
+}
