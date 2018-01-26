@@ -212,7 +212,7 @@
 				$count = count($diff);
 				if($count > 0){
 					echo "<label>Select Shift</label>";
-					echo "<select class='w3-input w3-border' required>";
+					echo "<select class='w3-input w3-border' name='tprShifts' id='tprShifts' required>";
 					foreach($diff as $key=>$value){
 							echo "<option>".$value."</option>";
 					}
@@ -225,7 +225,7 @@
 				}
 			}else{
 				echo "<label>Select Shift:</label>";
-					echo "<select class='w3-input w3-border'>";
+					echo "<select class='w3-input w3-border' name='tprShifts' id='tprShifts' required>";
 						echo "<option>6AM-6PM</option>";
 						echo "<option>6PM-6AM</option>";
 					echo "</select>";
@@ -243,7 +243,7 @@
 				$count = count($diff);
 				if($count > 0){
 					echo "<label>Select Shift</label>";
-					echo "<select class='w3-input w3-border' required>";
+					echo "<select class='w3-input w3-border'  name='tprShifts' id='tprShifts'  required>";
 					foreach($diff as $key=>$value){
 						echo "<option>".$value."</option>";
 					}
