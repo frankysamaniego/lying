@@ -39,4 +39,35 @@
 			echo mysql_error();
 		}
 	}
+	
+	if(isset($_POST['newFullName'])){
+		$fullname = $_POST['newFullName'];
+		$us = $_POST['editUserNam'];
+		$pw = $_POST['editPw'];
+		
+		$check = mysql_query("SELECT * FROM `users` WHERE `username`='$us' AND `fullName`='$fullname'");
+		$num = mysql_num_rows($check);
+		if($num > 0){
+			echo "DUPLICATE";
+		}else{
+			$insert = mysql_query("INSERT INTO `users` (`fullName`,`username`,`password`,`userType`) VALUES ('$fullname','$us','$pw','2')");
+			if($insert){
+				echo "SUCCESS";
+			}else{
+				echo mysql_error();
+			}
+		}
+	}
+	
+	
+	
+	if(isset($_POST['toDelUser'])){
+		$id = $_POST['toDelUser'];
+		$del = mysql_query("DELETE FROM `users` WHERE `id`='$id'");
+		if($del){
+			echo "SUCCESS";
+		}else{
+			echo mysql_error();
+		}
+	}
 ?>

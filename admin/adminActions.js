@@ -45,3 +45,43 @@ function saveUser(x){
 		}
 	});
 }
+
+
+
+
+function addUser(){
+	var data1 = $('#addNewUserForm').serializeArray();
+	$.ajax({
+		url:'adminProcess.php',
+		type:'post',
+		data:data1,
+		success:function(data){
+			console.log(data);
+			if(data == "SUCCESS"){
+				alert("User Added!");
+				window.location.reload();
+			}else{
+				alert("User not added!");
+			}
+		}
+	});
+}
+
+
+function deleteUser(x){
+	var id = x;
+	$.ajax({
+		url:'adminProcess.php',
+		type:'post',
+		data:'toDelUser='+id,
+		success:function(data){
+			console.log(data);
+			if(data == "SUCCESS"){
+				alert("User Deleted!");
+				window.location.reload();
+			}else{
+				alert("Cannot delete user!");
+			}
+		}
+	})
+}

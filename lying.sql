@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jan 26, 2018 at 05:27 AM
+-- Generation Time: Jan 27, 2018 at 07:59 AM
 -- Server version: 5.1.41
 -- PHP Version: 5.3.1
 
@@ -59,19 +59,47 @@ CREATE TABLE IF NOT EXISTS `bpus` (
   `dateOfReading` varchar(50) NOT NULL,
   `patientId` varchar(20) NOT NULL,
   `admitId` varchar(20) NOT NULL,
+  `type` varchar(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
 
 --
 -- Dumping data for table `bpus`
 --
 
-INSERT INTO `bpus` (`id`, `tprType`, `reading`, `shift`, `dateOfReading`, `patientId`, `admitId`) VALUES
-(1, 'S', '21', '6AM-6PM', '2018-01-24', '9', '8'),
-(2, 'S', '30', '6PM-6AM', '2018-01-24', '9', '8'),
-(3, 'U', '32', '', '2018-01-24', '9', '8'),
-(4, 'U', '54', '', '2018-01-24', '9', '8'),
-(5, 'U', '15', '6AM-6PM', '2018-01-24', '9', '8');
+INSERT INTO `bpus` (`id`, `tprType`, `reading`, `shift`, `dateOfReading`, `patientId`, `admitId`, `type`) VALUES
+(1, 'S', '21', '6AM-6PM', '2018-01-24', '9', '8', ''),
+(2, 'S', '30', '6PM-6AM', '2018-01-24', '9', '8', ''),
+(3, 'U', '32', '', '2018-01-24', '9', '8', ''),
+(4, 'U', '54', '', '2018-01-24', '9', '8', ''),
+(5, 'U', '15', '6AM-6PM', '2018-01-24', '9', '8', ''),
+(6, 'U', '30', '6AM-6PM', '2018-01-27', '9', '8', '0'),
+(7, 'U', 'aaa', '6PM-6AM', '2018-01-27', '9', '8', '0');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `doctorsorder`
+--
+
+CREATE TABLE IF NOT EXISTS `doctorsorder` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `patientId` varchar(20) NOT NULL,
+  `admittingId` varchar(20) NOT NULL,
+  `dateTime` varchar(100) NOT NULL,
+  `type` varchar(1) NOT NULL,
+  `orders` longtext NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+
+--
+-- Dumping data for table `doctorsorder`
+--
+
+INSERT INTO `doctorsorder` (`id`, `patientId`, `admittingId`, `dateTime`, `type`, `orders`) VALUES
+(1, '9', '8', '2018-01-27T10:30', '1', '<ul><li>asdasdasdas</li><li>da</li><li>sd</li><li>a</li><li>sd</li><li>as</li><li>d</li><li>as</li><li>d</li><li>a</li></ul>'),
+(2, '9', '8', '2018-01-27T10:30', '', '<ol><li>asda sdasdasdasd</li><li>as</li><li>da</li><li>sd</li><li>a</li><li>sd</li><li>a</li><li>sd</li><li>a</li></ol>'),
+(3, '9', '8', '2018-01-27T12:00', '', '<ol><li>asdas dasdas</li><li>da</li><li>sd</li><li>a</li><li>sd</li><li>a</li><li>sd</li><li>a</li></ol>');
 
 -- --------------------------------------------------------
 
@@ -173,6 +201,62 @@ CREATE TABLE IF NOT EXISTS `medications` (
 INSERT INTO `medications` (`id`, `medication`, `medicationType`, `medicationDate`, `shift`, `admitId`, `patientId`) VALUES
 (1, 'asdassdasd', 'ORAL', '2018-01-23', '6PM-6AM', '8', '9'),
 (2, 'Medication', 'PARENTAL', '2018-01-23', '6AM-6PM', '8', '9');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `nurserychart`
+--
+
+CREATE TABLE IF NOT EXISTS `nurserychart` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `babyName` varchar(255) NOT NULL,
+  `babySex` varchar(1) NOT NULL,
+  `babyDob` varchar(255) NOT NULL,
+  `timeOb` varchar(30) NOT NULL,
+  `babyWeight` varchar(20) NOT NULL,
+  `babyLength` varchar(255) NOT NULL,
+  `babyHc` varchar(255) NOT NULL,
+  `babyCc` varchar(255) NOT NULL,
+  `babyAc` varchar(255) NOT NULL,
+  `babyMac` varchar(255) NOT NULL,
+  `babyMother` varchar(255) NOT NULL,
+  `babyMotherAdd` text NOT NULL,
+  `babyLmp` varchar(255) NOT NULL,
+  `babyAog` varchar(255) NOT NULL,
+  `babyGravida` varchar(255) NOT NULL,
+  `babyPara` varchar(255) NOT NULL,
+  `babyFullTerm` varchar(255) NOT NULL,
+  `babyPremature` varchar(255) NOT NULL,
+  `babyAbortion` varchar(255) NOT NULL,
+  `babyNoChild` varchar(255) NOT NULL,
+  `babyPrenatal` varchar(255) NOT NULL,
+  `babyWhere` text NOT NULL,
+  `babyDrugsPreg` text NOT NULL,
+  `babyLabor` text NOT NULL,
+  `babyDrugsLabor` text NOT NULL,
+  `babySpontaneousOnset` varchar(255) NOT NULL,
+  `babyInduced` varchar(255) NOT NULL,
+  `babyMembraneRupture` text NOT NULL,
+  `babyAmniotocClear` varchar(255) NOT NULL,
+  `babyAmniotocNotClear` varchar(255) NOT NULL,
+  `babyDeliveryType` varchar(255) NOT NULL,
+  `babyDeliveryPresentation` varchar(255) NOT NULL,
+  `babyDeliveryComplication` varchar(255) NOT NULL,
+  `babyApgar1min` varchar(255) NOT NULL,
+  `babyApgar5min` varchar(255) NOT NULL,
+  `babyAttendingPhysician` varchar(255) NOT NULL,
+  `patinetId` varchar(20) NOT NULL,
+  `admitId` varchar(20) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `nurserychart`
+--
+
+INSERT INTO `nurserychart` (`id`, `babyName`, `babySex`, `babyDob`, `timeOb`, `babyWeight`, `babyLength`, `babyHc`, `babyCc`, `babyAc`, `babyMac`, `babyMother`, `babyMotherAdd`, `babyLmp`, `babyAog`, `babyGravida`, `babyPara`, `babyFullTerm`, `babyPremature`, `babyAbortion`, `babyNoChild`, `babyPrenatal`, `babyWhere`, `babyDrugsPreg`, `babyLabor`, `babyDrugsLabor`, `babySpontaneousOnset`, `babyInduced`, `babyMembraneRupture`, `babyAmniotocClear`, `babyAmniotocNotClear`, `babyDeliveryType`, `babyDeliveryPresentation`, `babyDeliveryComplication`, `babyApgar1min`, `babyApgar5min`, `babyAttendingPhysician`, `patinetId`, `admitId`) VALUES
+(1, 'asdasd', 'M', '2018-01-27', '10:30', '12', '12', '12', '12', '12', '12', 'asdasd', 'asda', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'asd', 'Y', 'asdads', 'adajdsjasd<!--<input type="date" name="babyLabor" class="w3-input w3-border w3-small" id="babyLabor" placeholder="Where" required>-->', 'asdas<!--<input type="date" name="babyLabor" class="w3-input w3-border w3-small" id="babyLabor" placeholder="Where" required>-->', '', 'asdas', 'dasd', 'asda<!--<input type="date" name="babyLabor" class="w3-input w3-border w3-small" id="babyLabor" placeholder="Where" required>-->', 'asd', 'sdasdas', 'asd', 'asd', 'asdasd', 'asd', 'asd', 'asd', '9', '8');
 
 -- --------------------------------------------------------
 
@@ -338,15 +422,19 @@ CREATE TABLE IF NOT EXISTS `rpt` (
   `dateOfReading` varchar(50) NOT NULL,
   `patientId` varchar(20) NOT NULL,
   `admitId` varchar(20) NOT NULL,
+  `type` varchar(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
 
 --
 -- Dumping data for table `rpt`
 --
 
-INSERT INTO `rpt` (`id`, `tprType`, `reading`, `shift`, `dateOfReading`, `patientId`, `admitId`) VALUES
-(3, 'Temp', '32', '12PM', '2018-01-24', '9', '8');
+INSERT INTO `rpt` (`id`, `tprType`, `reading`, `shift`, `dateOfReading`, `patientId`, `admitId`, `type`) VALUES
+(3, 'Temp', '32', '12PM', '2018-01-24', '9', '8', ''),
+(4, 'Temp', '30', '12AM', '2018-01-27', '9', '8', '1'),
+(5, '1', '', '', '', '9', '8', ''),
+(6, '1', '', '', '', '9', '8', '');
 
 -- --------------------------------------------------------
 
@@ -408,15 +496,19 @@ CREATE TABLE IF NOT EXISTS `tpr` (
   `height` varchar(5) NOT NULL,
   `patientId` varchar(20) NOT NULL,
   `admitId` varchar(20) NOT NULL,
+  `type` varchar(1) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
 
 --
 -- Dumping data for table `tpr`
 --
 
-INSERT INTO `tpr` (`id`, `dateOfReading`, `weight`, `height`, `patientId`, `admitId`) VALUES
-(1, '2018-01-24', '23', '23', '9', '8');
+INSERT INTO `tpr` (`id`, `dateOfReading`, `weight`, `height`, `patientId`, `admitId`, `type`) VALUES
+(1, '2018-01-24', '23', '23', '9', '8', ''),
+(2, '2018-01-27', '40', '40', '9', '8', '1'),
+(4, '2018-01-27', '23', '23', '9', '8', '0'),
+(5, '', '', '', '9', '8', '');
 
 -- --------------------------------------------------------
 
@@ -431,7 +523,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `password` varchar(255) NOT NULL,
   `userType` varchar(10) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
 
 --
 -- Dumping data for table `users`
@@ -439,7 +531,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `fullName`, `username`, `password`, `userType`) VALUES
 (1, 'Admin A. Admin', 'admin', 'admin', '1'),
-(2, 'Nurse Jane', 'janeN', '123456', '2');
+(3, 'Franky1', 'samaniego', '12345676', '2');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
