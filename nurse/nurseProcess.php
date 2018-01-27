@@ -195,13 +195,14 @@
 		//print_r($_POST);
 		$getShiftsType = $_POST['getShiftsType'];
 		$readingDateTpr = $_POST['readingDateTpr'];
+		$type = $_POST['typeShift'];
 		$patientId = $_POST['patientIdTpr'];
 		$tprShiftArr = array("12AM","4AM","8AM","12PM","4PM","8PM");
 		$bpusShifArr = array("6AM-6PM","6PM-6AM");
 		if($getShiftsType == 'BP' || $getShiftsType == 'S' || $getShiftsType == 'U'){
 			//echo "BPUS";
 			//check tprSheet table if data is 
-			$sql = mysql_query("SELECT * FROM `bpus` WHERE `dateOfReading`='$readingDateTpr' AND `patientId`='$patientId' AND `tprType`='$getShiftsType'");
+			$sql = mysql_query("SELECT * FROM `bpus` WHERE `dateOfReading`='$readingDateTpr' AND `patientId`='$patientId' AND `tprType`='$getShiftsType' AND `type`='$type'");
 			$num = mysql_num_rows($sql);
 			
 			if($num > 0){
@@ -233,7 +234,7 @@
 			
 			
 		}else{
-			$sql = mysql_query("SELECT * FROM `rpt` WHERE `dateOfReading`='$readingDateTpr' AND `patientId`='$patientId' AND `tprType`='$getShiftsType'");
+			$sql = mysql_query("SELECT * FROM `rpt` WHERE `dateOfReading`='$readingDateTpr' AND `patientId`='$patientId' AND `tprType`='$getShiftsType' AND `type`='$type'");
 			$num = mysql_num_rows($sql);
 			if($num > 0){
 				while($row = mysql_fetch_assoc($sql)){
@@ -267,7 +268,7 @@
 		}
 		echo "<label>Reading:</label>";
 		echo "<input type='text' class='w3-input w3-border' name='readingTpr' id='readingTpr' required />";
-		$checkTpr = mysql_query("SELECT * FROM `tpr` WHERE `dateOfReading`='$readingDateTpr' AND `patientId`='$patientId'");
+		$checkTpr = mysql_query("SELECT * FROM `tpr` WHERE `dateOfReading`='$readingDateTpr' AND `patientId`='$patientId' AND `type`='$type'");
 		$tprNum = mysql_num_rows($checkTpr);
 		if($tprNum > 0){
 			
@@ -291,24 +292,25 @@
 		$readingTpr = $_POST['readingTpr'];
 		$tprWeight = $_POST['tprWeight'];
 		$tprHeight = $_POST['tprHeight'];
-		$checkTpr = mysql_query("SELECT * FROM `tpr` WHERE `dateOfReading`='$readingDate' AND `patientId`='$patientId'");
+		$type1 = $_POST['type'];
+		$checkTpr = mysql_query("SELECT * FROM `tpr` WHERE `dateOfReading`='$readingDate' AND `patientId`='$patientId' AND `type`='$type1'");
 		$numTpr = mysql_num_rows($checkTpr);
 		
 		if($numTpr>0){
 			
 		}else{
-			$insertTpr = mysql_query("INSERT INTO `tpr` (`dateOfReading`,`weight`,`height`,`patientId`,`admitId`) VALUES ('$readingDate','$tprWeight','$tprHeight','$patientId','$admitId')");
+			$insertTpr = mysql_query("INSERT INTO `tpr` (`dateOfReading`,`weight`,`height`,`patientId`,`admitId`,`type`) VALUES ('$readingDate','$tprWeight','$tprHeight','$patientId','$admitId','$type1')");
 		}
 		//$insertBpus = mysql_query("INSERT INTO ``")
 		if($type == 'BP' || $type == 'S' || $type == 'U'){
-			$insertBpus = mysql_query("INSERT INTO `bpus` (`tprType`,`reading`,`shift`,`dateOfReading`,`patientId`,`admitId`) VALUES ('$type','$readingTpr','$tprShifts','$readingDate','$patientId','$admitId')");
+			$insertBpus = mysql_query("INSERT INTO `bpus` (`tprType`,`reading`,`shift`,`dateOfReading`,`patientId`,`admitId`,`type`) VALUES ('$type','$readingTpr','$tprShifts','$readingDate','$patientId','$admitId','$type1')");
 			if($insertBpus){
 				echo "SUCCESS";
 			}else{
 				echo mysql_error();
 			}
 		}else{
-			$inserRtp = mysql_query("INSERT INTO `rpt` (`tprType`,`reading`,`shift`,`dateOfReading`,`patientId`,`admitId`) VALUES ('$type','$readingTpr','$tprShifts','$readingDate','$patientId','$admitId')");
+			$inserRtp = mysql_query("INSERT INTO `rpt` (`tprType`,`reading`,`shift`,`dateOfReading`,`patientId`,`admitId`,`type`) VALUES ('$type','$readingTpr','$tprShifts','$readingDate','$patientId','$admitId','$type1')");
 			if($inserRtp){
 				echo "SUCCESS";
 			}else{
@@ -318,4 +320,71 @@
 	}
 	
 	
+	
+	if(isset($_POST['patientIdNursery'])){
+		//echo "<pre>",print_r($_POST),"</pre>";
+		$babyName = $_POST['babyName'];
+		$babySex = $_POST['babySex'];
+		$babyDob = $_POST['babyDob'];
+		$timeOb = $_POST['timeOb'];
+		$babyWeight = $_POST['babyWeight'];
+		$babyLength = $_POST['babyLength'];
+		$babyHc = $_POST['babyHc'];
+		$babyCc = $_POST['babyCc'];
+		$babyAc = $_POST['babyAc'];
+		$babyMac = $_POST['babyMac'];
+		$babyMother = $_POST['babyMother'];
+		$babyMotherAdd = $_POST['babyMotherAdd'];
+		$babyLmp = $_POST['babyLmp'];
+		$babyAog = $_POST['babyAog'];
+		$babyGravida = $_POST['babyGravida'];
+		$babyPara = $_POST['babyPara'];
+		$babyFullTerm = $_POST['babyFullTerm'];
+		$babyPremature = $_POST['babyPremature'];
+		$babyAbortion = $_POST['babyAbortion'];
+		$babyNoChild = $_POST['babyNoChild'];
+		$babyPreNatal = $_POST['babyPreNatal'];
+		$babyWhere = $_POST['babyWhere'];
+		$babyDrugsPreg = $_POST['babyDrugsPreg'];
+		$babyLabor = $_POST['babyLabor'];
+		$babyDurgsLabor = $_POST['babyDurgsLabor'];
+		$babySpontaneousOnset = $_POST['babySpontaneousOnset'];
+		$babyInduced = $_POST['babyInduced'];
+		$babyMembraneRupture = $_POST['babyMembraneRupture'];
+		$babyAmniotocClear = $_POST['babyAmniotocClear'];
+		$babyAmniotocNotClear = $_POST['babyAmniotocNotClear'];
+		$babyDeliveryType = $_POST['babyDeliveryType'];
+		$babyDeliveryPresentation = $_POST['babyDeliveryPresentation'];
+		$babyDeliveryComplication = $_POST['babyDeliveryComplication'];
+		$babyApgar1min = $_POST['babyApgar1min'];
+		$babyApgar5min = $_POST['babyApgar5min'];
+		$babyAttendingPhysician = $_POST['babyAttendingPhysician'];
+		$patientIdNursery = $_POST['patientIdNursery'];
+		$lastAdmittingNursery = $_POST['lastAdmittingNursery'];
+		$insertNursery = mysql_query("INSERT INTO `nurserychart` (`babyName`,`babySex`,`babyDob`,`timeOb`,`babyWeight`,`babyLength`,`babyHc`,`babyCc`,`babyAc`,`babyMac`,`babyMother`,`babyMotherAdd`,`babyLmp`,`babyAog`,`babyGravida`,`babyPara`,`babyFullTerm`,`babyPremature`,`babyAbortion`,`babyNoChild`,`babyPrenatal`,`babyWhere`,`babyDrugsPreg`,`babyLabor`,`babyDrugsLabor`,`babySpontaneousOnset`,`babyInduced`,`babyMembraneRupture`,`babyAmniotocClear`,`babyAmniotocNotClear`,`babyDeliveryType`,`babyDeliveryPresentation`,`babyDeliveryComplication`,`babyApgar1min`,`babyApgar5min`,`babyAttendingPhysician`,`patinetId`,`admitId`) VALUES ('$babyName','$babySex','$babyDob','$timeOb','$babyWeight','$babyLength','$babyHc','$babyCc','$babyAc','$babyMac','$babyMother','$babyMotherAdd','$babyLmp','$babyAog','$babyGravida','$babyPara','$babyFullTerm','$babyPremature','$babyAbortion','$babyNoChild','$babyPreNatal','$babyWhere','$babyDrugsPreg','$babyLabor','$babyDrugsLabor','$babySpontaneousOnset','$babyInduced','$babyMembraneRupture','$babyAmniotocClear','$babyAmniotocNotClear','$babyDeliveryType','$babyDeliveryPresentation','$babyDeliveryComplication','$babyApgar1min','$babyApgar5min','$babyAttendingPhysician','$patientIdNursery','$lastAdmittingNursery')");
+		if($insertNursery){
+			echo "SUCCESS";
+		}else{
+			echo mysql_error();
+		}
+		
+	}
+	
+	
+	
+	//print_r($_POST);
+	if(isset($_POST['doctorOrderdatetime'])){
+		$type = $_POST['tprType'];
+		$doctorOrderdatetime = $_POST['doctorOrderdatetime'];
+		$docOrders = $_POST['docOrders'];
+		$patientId = $_POST['patientId'];
+		$admitId = $_POST['admitId'];
+		
+		$insert = mysql_query("INSERT INTO `doctorsOrder` (`patientId`,`admittingId`,`dateTime`,`type`,`orders`) VALUES ('$patientId','$admitId','$doctorOrderdatetime','$type','$docOrders')");
+		if($insert){
+			echo "SUCCESS";
+		}else{
+			echo mysql_error();
+		}
+	}
 ?>

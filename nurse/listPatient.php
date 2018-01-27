@@ -33,7 +33,9 @@
 							 <a href="javascript:void(0);" alt="Add" title="Add" class="w3-text-black"><i class="fa fa-plus-circle fa-fx"></i></a>
 							<div class="w3-dropdown-content w3-bar-block w3-card-4 w3-border" style="right:0;width:220px;">
 							  <a href="?tpr=true&token=<?php echo $row['id'];?>" class="w3-bar-item w3-button"><i class="fa fa-folder-open-o "></i> TPR Result</a>
+							  <a href="?docOrder=true&token=<?php echo $row['id'];?>" class="w3-bar-item w3-button"><i class="fa fa-list "></i> Doctors Order</a>
 							  <a href="?nursery=true&token=<?php echo $row['id'];?>" class="w3-bar-item w3-button"><i class="fa fa-bar-chart "></i> Nursery Chart</a>
+							  <a href="?tprBaby=true&token=<?php echo $row['id'];?>" class="w3-bar-item w3-button"><i class="fa fa-folder-open-o "></i> TPR Result for Baby</a>
 							  <a href="?medication=true&token=<?php echo $row['id'];?>" class="w3-bar-item w3-button"><i class="fa fa-medkit"></i> Medication Record</a>
 							  <a href="?maternalRecord=true&token=<?php echo $row['id'];?>" class="w3-bar-item w3-button"><i class="fa fa-folder-open-o "></i> Maternal Service Record</a>
 							</div>

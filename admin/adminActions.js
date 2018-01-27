@@ -24,3 +24,24 @@ function addNewUserFromAdmin(){
 		});
 	}
 }
+
+
+
+
+function saveUser(x){
+	var data = $("#saveUser_"+x).serializeArray();
+	$.ajax({
+		url:'adminProcess.php',
+		type:'post',
+		data:data,
+		success:function(data){
+			console.log(data);
+			if(data == "SUCCESS"){
+				alert("Information Saved!");
+				window.location.reload();
+			}else{
+				alert("Information not saved! try again later");
+			}
+		}
+	});
+}

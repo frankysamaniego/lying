@@ -77,7 +77,7 @@ td{
 			<th id="saday" >8</th>
 		</tr>
 		<?php
-			$sql = mysql_query("SELECT * FROM `tpr` WHERE `patientId` = '$patientId' AND `type`='0'");
+			$sql = mysql_query("SELECT * FROM `tpr` WHERE `patientId` = '$patientId' AND `type`='1'");
 			while($row = mysql_fetch_assoc($sql)){
 				$dateOfReading = $row['dateOfReading'];
 			
@@ -88,7 +88,7 @@ td{
 			<td><?php echo $row['weight'];?></td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `bpus` WHERE `tprType`='BP' AND `dateOfReading`='$dateOfReading' AND `shift`='6AM-6PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting'  AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `bpus` WHERE `tprType`='BP' AND `dateOfReading`='$dateOfReading' AND `shift`='6AM-6PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -96,7 +96,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `bpus` WHERE `tprType`='BP' AND `dateOfReading`='$dateOfReading' AND `shift`='6PM-6AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `bpus` WHERE `tprType`='BP' AND `dateOfReading`='$dateOfReading' AND `shift`='6PM-6AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -104,7 +104,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `bpus` WHERE `tprType`='U' AND `dateOfReading`='$dateOfReading' AND `shift`='6AM-6PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting'  AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `bpus` WHERE `tprType`='U' AND `dateOfReading`='$dateOfReading' AND `shift`='6AM-6PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -112,7 +112,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `bpus` WHERE `tprType`='U' AND `dateOfReading`='$dateOfReading' AND `shift`='6PM-6AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `bpus` WHERE `tprType`='U' AND `dateOfReading`='$dateOfReading' AND `shift`='6PM-6AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -120,7 +120,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `bpus` WHERE `tprType`='S' AND `dateOfReading`='$dateOfReading' AND `shift`='6AM-6PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `bpus` WHERE `tprType`='S' AND `dateOfReading`='$dateOfReading' AND `shift`='6AM-6PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -128,7 +128,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `bpus` WHERE `tprType`='S' AND `dateOfReading`='$dateOfReading' AND `shift`='6PM-6AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `bpus` WHERE `tprType`='S' AND `dateOfReading`='$dateOfReading' AND `shift`='6PM-6AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -136,7 +136,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Respiration' AND `dateOfReading`='$dateOfReading' AND `shift`='12AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Respiration' AND `dateOfReading`='$dateOfReading' AND `shift`='12AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -144,7 +144,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Respiration' AND `dateOfReading`='$dateOfReading' AND `shift`='4AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting'  AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Respiration' AND `dateOfReading`='$dateOfReading' AND `shift`='4AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -152,7 +152,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Respiration' AND `dateOfReading`='$dateOfReading' AND `shift`='8AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting'  AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Respiration' AND `dateOfReading`='$dateOfReading' AND `shift`='8AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -160,7 +160,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Respiration' AND `dateOfReading`='$dateOfReading' AND `shift`='12PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting'  AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Respiration' AND `dateOfReading`='$dateOfReading' AND `shift`='12PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -168,7 +168,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Respiration' AND `dateOfReading`='$dateOfReading' AND `shift`='4PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting'  AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Respiration' AND `dateOfReading`='$dateOfReading' AND `shift`='4PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -176,57 +176,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Respiration' AND `dateOfReading`='$dateOfReading' AND `shift`='8PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting'  AND `type`='0'");
-				while($row1 = mysql_fetch_assoc($sql1)){
-					echo $row1['reading'];
-				}
-			?>
-			</td>
-			
-			
-			<td>
-			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Pulse' AND `dateOfReading`='$dateOfReading' AND `shift`='12AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
-				while($row1 = mysql_fetch_assoc($sql1)){
-					echo $row1['reading'];
-				}
-			?>
-			</td>
-			<td>
-			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Pulse' AND `dateOfReading`='$dateOfReading' AND `shift`='4AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
-				while($row1 = mysql_fetch_assoc($sql1)){
-					echo $row1['reading'];
-				}
-			?>
-			</td>
-			<td>
-			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Pulse' AND `dateOfReading`='$dateOfReading' AND `shift`='8AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
-				while($row1 = mysql_fetch_assoc($sql1)){
-					echo $row1['reading'];
-				}
-			?>
-			</td>
-			<td>
-			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Pulse' AND `dateOfReading`='$dateOfReading' AND `shift`='12PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
-				while($row1 = mysql_fetch_assoc($sql1)){
-					echo $row1['reading'];
-				}
-			?>
-			</td>
-			<td>
-			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Pulse' AND `dateOfReading`='$dateOfReading' AND `shift`='4PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
-				while($row1 = mysql_fetch_assoc($sql1)){
-					echo $row1['reading'];
-				}
-			?>
-			</td>
-			<td>
-			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Pulse' AND `dateOfReading`='$dateOfReading' AND `shift`='8PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Respiration' AND `dateOfReading`='$dateOfReading' AND `shift`='8PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -234,11 +184,61 @@ td{
 			</td>
 			
 			
+			<td>
+			<?php
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Pulse' AND `dateOfReading`='$dateOfReading' AND `shift`='12AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
+				while($row1 = mysql_fetch_assoc($sql1)){
+					echo $row1['reading'];
+				}
+			?>
+			</td>
+			<td>
+			<?php
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Pulse' AND `dateOfReading`='$dateOfReading' AND `shift`='4AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
+				while($row1 = mysql_fetch_assoc($sql1)){
+					echo $row1['reading'];
+				}
+			?>
+			</td>
+			<td>
+			<?php
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Pulse' AND `dateOfReading`='$dateOfReading' AND `shift`='8AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
+				while($row1 = mysql_fetch_assoc($sql1)){
+					echo $row1['reading'];
+				}
+			?>
+			</td>
+			<td>
+			<?php
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Pulse' AND `dateOfReading`='$dateOfReading' AND `shift`='12PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
+				while($row1 = mysql_fetch_assoc($sql1)){
+					echo $row1['reading'];
+				}
+			?>
+			</td>
+			<td>
+			<?php
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Pulse' AND `dateOfReading`='$dateOfReading' AND `shift`='4PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
+				while($row1 = mysql_fetch_assoc($sql1)){
+					echo $row1['reading'];
+				}
+			?>
+			</td>
+			<td>
+			<?php
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Pulse' AND `dateOfReading`='$dateOfReading' AND `shift`='8PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
+				while($row1 = mysql_fetch_assoc($sql1)){
+					echo $row1['reading'];
+				}
+			?>
+			</td>
+			
+			
 			
 			
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Temp' AND `dateOfReading`='$dateOfReading' AND `shift`='12AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Temp' AND `dateOfReading`='$dateOfReading' AND `shift`='12AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -246,7 +246,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Temp' AND `dateOfReading`='$dateOfReading' AND `shift`='4AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Temp' AND `dateOfReading`='$dateOfReading' AND `shift`='4AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -254,7 +254,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Temp' AND `dateOfReading`='$dateOfReading' AND `shift`='8AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Temp' AND `dateOfReading`='$dateOfReading' AND `shift`='8AM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -262,7 +262,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Temp' AND `dateOfReading`='$dateOfReading' AND `shift`='12PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Temp' AND `dateOfReading`='$dateOfReading' AND `shift`='12PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -270,7 +270,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Temp' AND `dateOfReading`='$dateOfReading' AND `shift`='4PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Temp' AND `dateOfReading`='$dateOfReading' AND `shift`='4PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -278,7 +278,7 @@ td{
 			</td>
 			<td>
 			<?php
-				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Temp' AND `dateOfReading`='$dateOfReading' AND `shift`='8PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='0'");
+				$sql1 = mysql_query("SELECT * FROM `rpt` WHERE `tprType`='Temp' AND `dateOfReading`='$dateOfReading' AND `shift`='8PM' AND `patientId`='$patientId' AND `admitId`='$lastAdmitting' AND `type`='1'");
 				while($row1 = mysql_fetch_assoc($sql1)){
 					echo $row1['reading'];
 				}
@@ -313,7 +313,7 @@ td{
 			</select>
 			<input type="hidden" name="patientId" id="patientId" value="<?php echo $patientId;?>">
 			<input type="hidden" name="admitId" id="admitId" value="<?php echo $lastAdmitting;?>">
-			<input type="hidden" name="type" id="type" value="0">
+			<input type="hidden" name="type" id="type" value="1">
 			<label>Date of Reading</label>
 			<input type='date' class='w3-input w3-small w3-border' id='readingDate' name = 'readingDate' onchange="return getShifts()" required>
 			<div id="appendingTprForm"></div>

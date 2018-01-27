@@ -24,4 +24,19 @@
 			}
 		}
 	}
+	
+	//print_r($_POST);
+	if(isset($_POST['userId'])){
+		$id = $_POST['userId'];
+		$fullName = $_POST['editUserFullName'];
+		$editUserNam = $_POST['editUserNam'];
+		$editPw = $_POST['editPw'];
+		
+		$update = mysql_query("UPDATE `users` SET `fullName`='$fullName', `username`='$editUserNam', `password`='$editPw' WHERE `id`='$id'");
+		if($update){
+			echo "SUCCESS";
+		}else{
+			echo mysql_error();
+		}
+	}
 ?>

@@ -69,7 +69,7 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
         <a href="?listPatient=true" class="w3-bar-item w3-button"><i class="fa fa-list-ul fa-fx"></i> List of Patient</a>
       </div>
     </div>
-  <a href="?" class="w3-bar-item w3-button main-item w3-hover-none  w3-hover-text-white"><i class="fa fa-sign-out fa-fx"></i> Logout</a>
+  <a href="logout.php" class="w3-bar-item w3-button main-item w3-hover-none  w3-hover-text-white"><i class="fa fa-sign-out fa-fx"></i> Logout</a>
 </div>
 </div>
 
@@ -89,8 +89,14 @@ html,body,h1,h2,h3,h4,h5 {font-family: "Raleway", sans-serif}
 					require("medication.php");
 				}else if(isset($_GET['tpr'])){
 					require("tpr.php");
+				}else if(isset($_GET['tprBaby'])){
+					require("tprBaby.php");
 				}else if(isset($_GET['nursery'])){
 					require("nursery.php");
+				}else if(isset($_GET['docOrder'])){
+					require("doctorsOrder.php");
+				}else{
+					require('listPatient.php');
 				}?>
 		</div>
 	</div>

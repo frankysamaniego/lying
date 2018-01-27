@@ -91,11 +91,12 @@ function getShifts(){
 	var tprType = $('#tprType').val();
 	var readingDate = $('#readingDate').val();
 	var patientId = $('#patientId').val();
+	var typeShift = $('#type').val();
 	//alert(tprType+' '+readingDate);
 	$.ajax({
 		url:'nurseProcess.php',
 		type:'post',
-		data:'getShiftsType='+tprType+'&readingDateTpr='+readingDate+'&patientIdTpr='+patientId,
+		data:'getShiftsType='+tprType+'&readingDateTpr='+readingDate+'&patientIdTpr='+patientId+'&typeShift='+typeShift,
 		success:function(data){
 			console.log(data);
 			$('#appendingTprForm').html(data);
@@ -120,4 +121,49 @@ function submitTpr(){
 			window.location.reload();
 		}
 	});
+}
+
+
+
+
+
+function nurseryInfoSubmit(){
+	var nurseryDetails = $('#nurseryForm').serializeArray();
+	$.ajax({
+		url:'nurseProcess.php',
+		type:'post',
+		data:nurseryDetails,
+		success:function(data){
+			if(data == "SUCCESS"){
+				alert('Record Successfully Added!');
+				window.location.reload();
+			}else{
+				alert('Record Not Added, Please try again Later');
+			}
+			//
+			//
+		}
+	});
+}
+
+
+
+
+
+function submitDocOrder(){
+	var docOrder = $('#docOrder').serializeArray();
+	$.ajax({
+		url:'nurseProcess.php',
+		type:'post',
+		data:docOrder,
+		success:function(data){
+			console.log(data);
+			if(data == "SUCCESS"){
+				alert('Record Successfully Added!');
+				window.location.reload();
+			}else{
+				alert('Record Not Added, Please try again Later');
+			}
+		}
+	})
 }
