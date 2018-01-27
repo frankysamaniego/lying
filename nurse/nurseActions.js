@@ -167,3 +167,25 @@ function submitDocOrder(){
 		}
 	})
 }
+
+
+
+function reAdmit(x){
+	var readmitId = x;
+	var data = $('#readmissionForm').serializeArray();
+	console.log(data);
+	$.ajax({
+		url:'nurseProcess.php',
+		type:'post',
+		data:data,
+		success:function(data){
+			console.log(data);
+			if(data == "SUCCESS"){
+				alert('Patient Successfully Admitted!');
+				window.open('index.php','_self');
+			}else{
+				alert('Error! Please try again Later');
+			}
+		}
+	})
+}

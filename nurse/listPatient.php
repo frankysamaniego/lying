@@ -1,3 +1,18 @@
+<?php
+	if(isset($_GET['discharge'])){
+		$id = $_GET['token'];
+		$update = mysql_query("UPDATE `patientdata` SET `status`='2' WHERE `id`='$id'");
+		if($update){
+			echo "<script type='text/javascript' language='javascript'>alert('Patient Discharged!')</script>";
+			echo "<script type='text/javascript' language='javascript'>window.open('index.php','_self')</script>";
+		}
+	}
+	if(isset($_GET['reAdmit'])){
+		require("admissionForm.php");
+	}
+?>
+
+
 <div class="w3-container">
 		<h2><div class='w3-half'><span class='fa fa-list'></span> Masterlist</div><div class="w3-rest"><input type="text" id="search" class='w3-right w3-input w3-small' placeholder="Search Patient's Name/ Hospital Number/ Address"><span style="position:absolute;right:50px;" class="w3-right fa fa-search"></span></div><hr/></h2>
 		<table class="w3-table w3-striped">
@@ -40,15 +55,19 @@
 							  <a href="?maternalRecord=true&token=<?php echo $row['id'];?>" class="w3-bar-item w3-button"><i class="fa fa-folder-open-o "></i> Maternal Service Record</a>
 							</div>
 						</div> | 
+						<a href="?token=<?php echo $row['id'];?>&discharge=true" alt="Discharge Patient" title="Discharge" class="w3-text-black"><i class="fa fa-sign-out fa-fx"></i></a> |
 						<?php }else{?>
 							 <a href="?token=<?php echo $row['id'];?>&reAdmit=true" alt="Re Admit" title="Re Admit" class="w3-text-black"><i class="fa fa-ambulance fa-fx"></i></a> | 
 						<?php }?>
 						<div class="w3-dropdown-hover w3-white">
 							 <a href="javascript:void(0);" alt="Print Documents"" title="Print Documents" class="w3-text-black"><i class="fa fa-print fa-fx"></i></a>
 							<div class="w3-dropdown-content w3-bar-block w3-card-4 w3-border" style="right:0;width:220px;">
+							  <a href="patient_data.php?token=<?php echo $row['id']?>" class="w3-bar-item w3-button" target="_new"><i class="fa fa-file-word-o"></i> Patient Data</a>
 							  <a href="consent.php?token=<?php echo $row['id']?>" class="w3-bar-item w3-button" target="_new"><i class="fa fa-file-word-o"></i> Consent to Care</a>
+							  <a href="agreement_suso.php?token=<?php echo $row['id']?>" class="w3-bar-item w3-button" target="_new"><i class="fa fa-file-word-o"></i> Kasunduan Sa Pagpapasuso</a>
 							</div>
-						</div>
+						</div> 
+						
 					</td>
 				</tr>
 				<?php }?>
