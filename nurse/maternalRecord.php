@@ -1,7 +1,30 @@
 <?php
 	session_start();
 	$patientId = $_GET['token'];
+	$lastAdmitting = getAdmittingLastId($patientId);
+	$sql = mysql_query("SELECT * FROM `patientdata` WHERE `id`='$patientId'");
+	while($row = mysql_fetch_assoc($sql)){
+		$now = strtotime(date('Y-m-d')); // Today in UNIX Timestamp
+		$birthday = strtotime($row['dob']); // Birthday in UNIX Timestamp
+		$age = $now - $birthday; // As the UNIX Timestamp is in seconds, get the seconds you lived
+		$age = $age / 60 / 60 / 24 / 365; // Convert seconds to years
+		$finalAge=floor($age); 
+		$motherName = ucwords($row['givenName'].' '.$row['middleName'].' '.$row['lastName']);
+		$motheraddress = $row['address'];
+	}
 	
+	$s = mysql_query("SELECT * FROM `historyofpregnancy` WHERE `patientId`='$patientId' AND `admittingdetailsid`='$lastAdmitting'");
+	while($r = mysql_fetch_assoc($s)){
+		$lmp = $r['lmp'];
+		$edc = $r['edc'];
+		$aog = $r['aog'];
+		$gravida = $r['gravida'];
+		$para = $r['para'];
+		$tpal = $r['tpal'];
+		$pnc = $r['pnc'];
+		$tt = $r['tt'];
+		$postObHistory = $r['postObHistory'];
+	}
 ?>
 <div class="w3-row">
 	<form action="javascript:void(0);" method="POST" onsubmit="return addNewMaternal(<?php echo $patientId;?>)" id="maternalServiceRecordForm" enctype="multipart/form-data">
@@ -13,11 +36,11 @@
 						<tr>
 							<td>LMP:</td>
 							<td>
-								<input type="date" name="lmpMaternal" class="w3-input w3-border w3-small" id="lmpMaternal" required>
+								<input type="text" value="<?php echo $lmp;?>" name="lmpMaternal" class="w3-input w3-border w3-small" id="lmpMaternal" required>
 							</td>
 							<td>EDC:</td>
 							<td>
-								<input type="date" name="edcMaternal" class="w3-input w3-border w3-small" id="edcMaternal" required>
+								<input type="text" value="<?php echo $edc;?>" name="edcMaternal" class="w3-input w3-border w3-small" id="edcMaternal" required>
 							</td>
 						</tr>
 					</table>

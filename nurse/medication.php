@@ -17,11 +17,7 @@
 				 <option value="PARENTAL">PARENTAL</option>
 			</select>
 			<label>Medication Shift</label>
-			<select class="w3-select w3-border w3-small" id="medicationShift" name="medicationShift" required>
-				 <option value="" disabled selected>Choose Medication Shift</option>
-				 <option value="6AM-6PM">6AM-6PM</option>
-				 <option value="6PM-6AM">6PM-6AM</option>
-			</select>
+			<input type="text" class="w3-select w3-border w3-small" id="medicationShift" name="medicationShift" required>
 			<label>Date of Medication</label>
 			<input type="date" name="medicationDate" id="medicationDate" class="w3-input w3-border" required>
 			<label>Medication</label>
@@ -51,8 +47,7 @@
 					<tr class="w3-teal">
 						<th>Medication</th>
 						<th>Date</th>
-						<th class="w3-center">6AM - 6PM</th>
-						<th class="w3-center">6PM - 6AM</th>
+						<th class="w3-center">Shift</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -63,8 +58,7 @@
 						<tr>
 							<td><?php echo $row['medication'];?></td>
 							<td><?php echo date("F j, Y",strtotime($row['medicationDate']));?></td>
-							<td class="w3-center"><?php if($row['shift'] == "6AM-6PM"){ ?><span class="fa fa-check w3-text-green"></span><?php }?></td>
-							<td class="w3-center"><?php if($row['shift'] == "6PM-6AM"){ ?><span class="fa fa-check w3-text-green"></span><?php }?></td>
+							<td class="w3-center"><?php echo $row['shift']?></td>
 						</tr>
 					<?php }?>
 				</tbody>
@@ -77,8 +71,7 @@
 					<tr class="w3-teal">
 						<th>Medication</th>
 						<th>Date</th>
-						<th class="w3-center">6AM - 6PM</th>
-						<th class="w3-center">6PM - 6AM</th>
+						<th class="w3-center">Shift</th>
 					</tr>
 				</thead>
 				<tbody>
@@ -89,8 +82,7 @@
 						<tr>
 							<td><?php echo $row['medication'];?></td>
 							<td><?php echo date("F j, Y",strtotime($row['medicationDate']));?></td>
-							<td class="w3-center"><?php if($row['shift'] == "6AM-6PM"){ ?><span class="fa fa-check w3-text-green"></span><?php }?></td>
-							<td class="w3-center"><?php if($row['shift'] == "6PM-6AM"){ ?><span class="fa fa-check w3-text-green"></span><?php }?></td>
+							<td class="w3-center"><?php echo $row['shift']?></td>
 						</tr>
 					<?php }?>
 				</tbody>

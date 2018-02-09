@@ -11,6 +11,19 @@
 		$motherName = ucwords($row['givenName'].' '.$row['middleName'].' '.$row['lastName']);
 		$motheraddress = $row['address'];
 	}
+	
+	$s = mysql_query("SELECT * FROM `historyofpregnancy` WHERE `patientId`='$patientId' AND `admittingdetailsid`='$lastAdmitting'");
+	while($r = mysql_fetch_assoc($s)){
+		$lmp = $r['lmp'];
+		$edc = $r['edc'];
+		$aog = $r['aog'];
+		$gravida = $r['gravida'];
+		$para = $r['para'];
+		$tpal = $r['tpal'];
+		$pnc = $r['pnc'];
+		$tt = $r['tt'];
+		$postObHistory = $r['postObHistory'];
+	}
 ?>
 <div class="w3-container">
 	<h2><span class='fa fa-plus'></span> New Nursery Chart<hr/></h2>
@@ -78,19 +91,19 @@
 							<tr>
 								<td>LMP:</td>
 								<td colspan="2">
-									<input type="text" name="babyLmp" class="w3-input w3-border w3-small" id="babyLmp" placeholder="LMP" required>
+									<input type="text" name="babyLmp" class="w3-input w3-border w3-small" id="babyLmp" placeholder="LMP" value="<?php echo $lmp;?>" required>
 								</td>
 								<td style="text-align:right">AOG:</td>
 								<td colspan="2">
-									<input type="text" name="babyAog" class="w3-input w3-border w3-small" id="babyAog" placeholder="AOG" required>
+									<input type="text" name="babyAog" class="w3-input w3-border w3-small" id="babyAog" placeholder="AOG" value="<?php echo $aog;?>" required>
 								</td>
 								<td style="text-align:right">G:</td>
 								<td colspan="2">
-									<input type="text" name="babyGravida" class="w3-input w3-border w3-small" id="babyGravida" placeholder="Gravida" required>
+									<input type="text" name="babyGravida" class="w3-input w3-border w3-small" id="babyGravida" placeholder="Gravida" value="<?php echo $gravida;?>" required>
 								</td>
 								<td style="text-align:right">P:</td>
 								<td colspan="2">
-									<input type="text" name="babyPara" class="w3-input w3-border w3-small" id="babyPara" placeholder="Para" required>
+									<input type="text" name="babyPara" class="w3-input w3-border w3-small" id="babyPara" placeholder="Para" value="<?php echo $para;?>" required>
 								</td>
 							</tr>
 							<tr>
