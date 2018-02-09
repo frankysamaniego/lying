@@ -1,6 +1,16 @@
 <?php
 	$patientId = $_GET['token'];
 	$lastAdmitting = getAdmittingLastId($patientId);
+	$sql = mysql_query("SELECT * FROM `patientdata` WHERE `id`='$patientId'");
+	while($row = mysql_fetch_assoc($sql)){
+		$now = strtotime(date('Y-m-d')); // Today in UNIX Timestamp
+		$birthday = strtotime($row['dob']); // Birthday in UNIX Timestamp
+		$age = $now - $birthday; // As the UNIX Timestamp is in seconds, get the seconds you lived
+		$age = $age / 60 / 60 / 24 / 365; // Convert seconds to years
+		$finalAge=floor($age); 
+		$motherName = ucwords($row['givenName'].' '.$row['middleName'].' '.$row['lastName']);
+		$motheraddress = $row['address'];
+	}
 ?>
 <div class="w3-container">
 	<h2><span class='fa fa-plus'></span> New Nursery Chart<hr/></h2>
@@ -58,11 +68,11 @@
 							<tr>
 								<td>Name of Mother</td>
 								<td colspan="5">
-									<input type="text" name="babyMother" class="w3-input w3-border w3-small" id="babyMother" placeholder="Name of Mother" required>
+									<input type="text" name="babyMother" class="w3-input w3-border w3-small" id="babyMother" placeholder="Name of Mother" value="<?php echo $motherName;?>" required>
 								</td>
 								<td>Address</td>
 								<td colspan="5">
-									<input type="text" name="babyMotherAdd" class="w3-input w3-border w3-small" id="babyMotherAdd" placeholder="Address" required>
+									<input type="text" name="babyMotherAdd" class="w3-input w3-border w3-small" id="babyMotherAdd" placeholder="Address" value="<?php echo $motheraddress?>" required>
 								</td>
 							</tr>
 							<tr>

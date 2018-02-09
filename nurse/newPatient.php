@@ -25,12 +25,8 @@
 						</tr>
 						<tr>
 							<td>ADDRESS:</td>
-							<td colspan="">
+							<td colspan="3">
 								<input type="text" name="address" class="w3-input w3-border w3-small" id="address" placeholder="Adress" required>
-							</td>
-							<td  style="text-align:right !important;">AGE:</td>
-							<td>
-								<input type="number" name="age" class="w3-input w3-border w3-small" id="age" placeholder="Age" required>
 							</td>
 							<td  style="text-align:right !important;">CP #:</td>
 							<td>

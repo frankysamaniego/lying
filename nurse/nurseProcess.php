@@ -11,7 +11,11 @@
 		$middleName = $_POST['middleName'];
 		$dob = $_POST['dob'];
 		$address = $_POST['address'];
-		$age = $_POST['age'];
+		$now = strtotime(date('Y-m-d')); // Today in UNIX Timestamp
+		$birthday = strtotime($dob); // Birthday in UNIX Timestamp
+		$age = $now - $birthday; // As the UNIX Timestamp is in seconds, get the seconds you lived
+		$age = $age / 60 / 60 / 24 / 365; // Convert seconds to years
+		$finalAge=floor($age); 
 		$cpNum = $_POST['cpNum'];
 		$nationality = $_POST['nationality'];
 		$religion = $_POST['religion'];
@@ -62,7 +66,7 @@
 		if($check > 0){
 			echo "DUPLICATE";
 		}else{
-			$insertPatientData = mysql_query("INSERT INTO `patientdata` (`lastName`,`givenName`,`middleName`,`address`,`cpNo`,`dob`,`age`,`nationality`,`religion`,`occupation`,`husbandName`,`husbandAge`,`husbandNationality`,`husbandReligion`,`husbandOccupation`,`informatName`,`relationToPatient`,`informantAddress`,`informatCpNo`,`status`) VALUES ('$lastName','$givenName','$middleName','$address','$cpNum','$dob','$age','$nationality','$religion','$occupation','$husbandName','$husbandAge','$husbandNationality','$husbandReligion','$husbandOccupation','$informantName','$informatRelation','$informantAddress','$informantCpNum','1')");
+			$insertPatientData = mysql_query("INSERT INTO `patientdata` (`lastName`,`givenName`,`middleName`,`address`,`cpNo`,`dob`,`age`,`nationality`,`religion`,`occupation`,`husbandName`,`husbandAge`,`husbandNationality`,`husbandReligion`,`husbandOccupation`,`informatName`,`relationToPatient`,`informantAddress`,`informatCpNo`,`status`) VALUES ('$lastName','$givenName','$middleName','$address','$cpNum','$dob','$finalAge','$nationality','$religion','$occupation','$husbandName','$husbandAge','$husbandNationality','$husbandReligion','$husbandOccupation','$informantName','$informatRelation','$informantAddress','$informantCpNum','1')");
 			if($insertPatientData){
 				$lastId = getLastId('patientdata');
 				$insertAdmittingDetails = mysql_query("INSERT INTO `admittingdetails` (`dateOfAdmission`,`timeOfAdmission`,`complaint`,`bow`,`others`,`patientId`) VALUES ('$admitDate','$admitTime','$complaints','$bow','$others','$lastId')");

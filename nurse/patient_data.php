@@ -28,7 +28,7 @@
 </div>
 <hr />
 <br />
-<p style="float:right">CASE NUMBER: ____________________</p>
+<p style="float:right">CASE NUMBER: <span style="display: inline-block;border-bottom:1px solid black;width:150px;text-align:center;"><?php echo $patientId;?></span></p>
  <br /><br />
  <center><h3 style="text-decoration:underline;">PATIENT DATA</h3></center>
 <br /><br />

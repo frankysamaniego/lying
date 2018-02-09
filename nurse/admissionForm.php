@@ -3,7 +3,17 @@
 		$("#addOrder").css('display','block');
 	});
 </script>
-
+<?php
+	$patient_id = $_GET['token'];
+	$sql = mysql_query("SELECT * FROM `patientdata` WHERE `id`='$patient_id'");
+	while($row = mysql_fetch_assoc($sql)){
+		$now = strtotime(date('Y-m-d')); // Today in UNIX Timestamp
+		$birthday = strtotime($row['dob']); // Birthday in UNIX Timestamp
+		$age = $now - $birthday; // As the UNIX Timestamp is in seconds, get the seconds you lived
+		$age = $age / 60 / 60 / 24 / 365; // Convert seconds to years
+		$finalAge=floor($age); 
+	}
+?>
 <div id="addOrder" class="w3-modal w3-animate-opacity" style="z-index:999999;" >
   <div class="w3-modal-content w3-card-8" style="min-width:600px;">
     <header class="w3-container w3-teal">
@@ -26,7 +36,7 @@
 					</td>
 					<td>CHIEF COMPLAINT:</td>
 					<td>
-						<input type="checkbox" name="chiefComplaint[]" class="w3-check w3-border w3-small" id="chiefComplaint[]" value="Labor Pain"  placeholder="Admission Time" > Labor Pain
+						<input type="checkbox" name="chiefComplaint[]" class="w3-check w3-border w3-small" id="chiefComplaint[]" value="Labor Pain"  placeholder="Admission Time" > Labor Pain<br/>
 						<input type="checkbox" name="chiefComplaint[]" value="Viginal Bleeding" class="w3-check w3-border w3-small" id="chiefComplaint[]" placeholder="Admission Time" > Viginal Bleeding
 					</td>
 				</tr>
