@@ -198,6 +198,7 @@
 							</tr>
 							<tr>
 								<td><input type="submit" class="w3-btn w3-green" value="Submit Details" name="submitNursery" id="submitNursery"></td>
+								<td><a href="../nurse/" class="w3-btn w3-red"><i class="fa fa-remove"></i>Cancel</a></td>
 							</tr>
 						</table>
 					</div>

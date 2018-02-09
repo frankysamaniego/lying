@@ -98,6 +98,7 @@
 		</div>
 		<div class="w3-container">
 			<button class="w3-button w3-green" onclick="document.getElementById('newMedication').style.display='block';">Add New Record</button>
+			<a href="../nurse/" class="w3-btn w3-red"><i class="fa fa-remove"></i>Cancel</a>
 		</div>
 	</div>
 		

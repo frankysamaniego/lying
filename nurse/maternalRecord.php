@@ -206,6 +206,7 @@
 				</div>
 				<div class="w3-row">
 					<button class="w3-btn w3-green "><i class="fa fa-check"></i> SUBMIT</button>
+					<a href="../nurse/" class="w3-btn w3-red"><i class="fa fa-remove"></i>Cancel</a>
 				</div>
 			</div>
 		</fieldset>

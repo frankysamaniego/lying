@@ -243,6 +243,7 @@
 			</table>
 			<div class="w3-container w3-center">
 				<button class="w3-btn w3-green"><i class="fa fa-check"></i>Proceed</button>
+				<a href="../nurse/" class="w3-btn w3-red"><i class="fa fa-remove"></i>Cancel</a>
 			</div>
 		</div>
 	</form>

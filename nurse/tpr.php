@@ -288,6 +288,7 @@ td{
 		<?php  }?>
 	</table>
 		<button class="w3-btn w3-teal" onclick="document.getElementById('addTpr').style.display='block'">Add New Record</button>
+		<a href="../nurse/" class="w3-btn w3-red"><i class="fa fa-remove"></i>Cancel</a>
 </div>
 
 

@@ -38,6 +38,7 @@
 	</table>
 	<br/>
 	<button class="w3-btn w3-green" onclick="document.getElementById('addOrder').style.display='block'">ADD</button>
+	<a href="../nurse/" class="w3-btn w3-red"><i class="fa fa-remove"></i>Cancel</a>
 </div>
 
 
