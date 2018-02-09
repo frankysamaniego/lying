@@ -1,25 +1,24 @@
 -- phpMyAdmin SQL Dump
--- version 3.2.4
+-- version 4.5.1
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: Jan 27, 2018 at 07:59 AM
--- Server version: 5.1.41
--- PHP Version: 5.3.1
+-- Host: 127.0.0.1
+-- Generation Time: Jan 29, 2018 at 06:41 AM
+-- Server version: 10.1.13-MariaDB
+-- PHP Version: 5.6.23
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `lying`
 --
-CREATE DATABASE `lying` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
-USE `lying`;
 
 -- --------------------------------------------------------
 
@@ -27,16 +26,15 @@ USE `lying`;
 -- Table structure for table `admittingdetails`
 --
 
-CREATE TABLE IF NOT EXISTS `admittingdetails` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `admittingdetails` (
+  `id` int(10) UNSIGNED NOT NULL,
   `dateOfAdmission` varchar(50) NOT NULL,
   `timeOfAdmission` varchar(40) NOT NULL,
   `complaint` varchar(255) NOT NULL,
   `bow` varchar(255) NOT NULL,
   `others` varchar(255) NOT NULL,
-  `patientId` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `patientId` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `admittingdetails`
@@ -51,17 +49,16 @@ INSERT INTO `admittingdetails` (`id`, `dateOfAdmission`, `timeOfAdmission`, `com
 -- Table structure for table `bpus`
 --
 
-CREATE TABLE IF NOT EXISTS `bpus` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `bpus` (
+  `id` int(10) UNSIGNED NOT NULL,
   `tprType` varchar(100) NOT NULL,
   `reading` varchar(255) NOT NULL,
   `shift` varchar(50) NOT NULL,
   `dateOfReading` varchar(50) NOT NULL,
   `patientId` varchar(20) NOT NULL,
   `admitId` varchar(20) NOT NULL,
-  `type` varchar(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=8 ;
+  `type` varchar(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `bpus`
@@ -82,15 +79,14 @@ INSERT INTO `bpus` (`id`, `tprType`, `reading`, `shift`, `dateOfReading`, `patie
 -- Table structure for table `doctorsorder`
 --
 
-CREATE TABLE IF NOT EXISTS `doctorsorder` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `doctorsorder` (
+  `id` int(10) UNSIGNED NOT NULL,
   `patientId` varchar(20) NOT NULL,
   `admittingId` varchar(20) NOT NULL,
   `dateTime` varchar(100) NOT NULL,
   `type` varchar(1) NOT NULL,
-  `orders` longtext NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `orders` longtext NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `doctorsorder`
@@ -107,8 +103,8 @@ INSERT INTO `doctorsorder` (`id`, `patientId`, `admittingId`, `dateTime`, `type`
 -- Table structure for table `historyofpregnancy`
 --
 
-CREATE TABLE IF NOT EXISTS `historyofpregnancy` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `historyofpregnancy` (
+  `id` int(10) UNSIGNED NOT NULL,
   `lmp` varchar(255) NOT NULL,
   `edc` varchar(255) NOT NULL,
   `aog` varchar(255) NOT NULL,
@@ -119,9 +115,8 @@ CREATE TABLE IF NOT EXISTS `historyofpregnancy` (
   `tt` varchar(255) NOT NULL,
   `postObHistory` text NOT NULL,
   `patientId` varchar(20) NOT NULL,
-  `admittingdetailsid` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `admittingdetailsid` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `historyofpregnancy`
@@ -136,17 +131,16 @@ INSERT INTO `historyofpregnancy` (`id`, `lmp`, `edc`, `aog`, `gravida`, `para`, 
 -- Table structure for table `internalexam`
 --
 
-CREATE TABLE IF NOT EXISTS `internalexam` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `internalexam` (
+  `id` int(10) UNSIGNED NOT NULL,
   `cervical` varchar(255) NOT NULL,
   `presenting` varchar(255) NOT NULL,
   `bow` varchar(255) NOT NULL,
   `uti` varchar(255) NOT NULL,
   `patientId` varchar(20) NOT NULL,
   `visitId` varchar(20) NOT NULL,
-  `admitId` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `admitId` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `internalexam`
@@ -161,14 +155,13 @@ INSERT INTO `internalexam` (`id`, `cervical`, `presenting`, `bow`, `uti`, `patie
 -- Table structure for table `maternalvisits`
 --
 
-CREATE TABLE IF NOT EXISTS `maternalvisits` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `maternalvisits` (
+  `id` int(10) UNSIGNED NOT NULL,
   `dateOfVisit` varchar(50) NOT NULL,
   `timeOfVisit` varchar(20) NOT NULL,
   `patientId` varchar(20) NOT NULL,
-  `admittingDetailsId` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `admittingDetailsId` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `maternalvisits`
@@ -183,16 +176,15 @@ INSERT INTO `maternalvisits` (`id`, `dateOfVisit`, `timeOfVisit`, `patientId`, `
 -- Table structure for table `medications`
 --
 
-CREATE TABLE IF NOT EXISTS `medications` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `medications` (
+  `id` int(10) UNSIGNED NOT NULL,
   `medication` text NOT NULL,
   `medicationType` varchar(20) NOT NULL,
   `medicationDate` varchar(50) NOT NULL,
   `shift` varchar(20) NOT NULL,
   `admitId` varchar(20) NOT NULL,
-  `patientId` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=3 ;
+  `patientId` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `medications`
@@ -208,8 +200,8 @@ INSERT INTO `medications` (`id`, `medication`, `medicationType`, `medicationDate
 -- Table structure for table `nurserychart`
 --
 
-CREATE TABLE IF NOT EXISTS `nurserychart` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `nurserychart` (
+  `id` int(10) UNSIGNED NOT NULL,
   `babyName` varchar(255) NOT NULL,
   `babySex` varchar(1) NOT NULL,
   `babyDob` varchar(255) NOT NULL,
@@ -247,9 +239,8 @@ CREATE TABLE IF NOT EXISTS `nurserychart` (
   `babyApgar5min` varchar(255) NOT NULL,
   `babyAttendingPhysician` varchar(255) NOT NULL,
   `patinetId` varchar(20) NOT NULL,
-  `admitId` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `admitId` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `nurserychart`
@@ -264,8 +255,8 @@ INSERT INTO `nurserychart` (`id`, `babyName`, `babySex`, `babyDob`, `timeOb`, `b
 -- Table structure for table `objectiveobservation`
 --
 
-CREATE TABLE IF NOT EXISTS `objectiveobservation` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `objectiveobservation` (
+  `id` int(10) UNSIGNED NOT NULL,
   `bp` varchar(20) NOT NULL,
   `temp` varchar(20) NOT NULL,
   `weight` varchar(25) NOT NULL,
@@ -287,9 +278,8 @@ CREATE TABLE IF NOT EXISTS `objectiveobservation` (
   `warts` varchar(25) NOT NULL,
   `patientId` varchar(20) NOT NULL,
   `visitId` varchar(20) NOT NULL,
-  `admitId` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=5 ;
+  `admitId` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `objectiveobservation`
@@ -304,13 +294,12 @@ INSERT INTO `objectiveobservation` (`id`, `bp`, `temp`, `weight`, `heent`, `brea
 -- Table structure for table `pastmedhistory`
 --
 
-CREATE TABLE IF NOT EXISTS `pastmedhistory` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `pastmedhistory` (
+  `id` int(10) UNSIGNED NOT NULL,
   `medStatus` varchar(255) NOT NULL,
   `patientId` varchar(20) NOT NULL,
-  `admittingdetailsid` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `admittingdetailsid` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `pastmedhistory`
@@ -325,8 +314,8 @@ INSERT INTO `pastmedhistory` (`id`, `medStatus`, `patientId`, `admittingdetailsi
 -- Table structure for table `patientdata`
 --
 
-CREATE TABLE IF NOT EXISTS `patientdata` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `patientdata` (
+  `id` int(10) UNSIGNED NOT NULL,
   `lastName` varchar(255) NOT NULL,
   `givenName` varchar(255) NOT NULL,
   `middleName` varchar(255) NOT NULL,
@@ -346,9 +335,8 @@ CREATE TABLE IF NOT EXISTS `patientdata` (
   `relationToPatient` varchar(255) NOT NULL,
   `informantAddress` text NOT NULL,
   `informatCpNo` varchar(15) NOT NULL,
-  `status` varchar(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=10 ;
+  `status` varchar(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `patientdata`
@@ -363,8 +351,8 @@ INSERT INTO `patientdata` (`id`, `lastName`, `givenName`, `middleName`, `address
 -- Table structure for table `physicalexams`
 --
 
-CREATE TABLE IF NOT EXISTS `physicalexams` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `physicalexams` (
+  `id` int(10) UNSIGNED NOT NULL,
   `bp` varchar(255) NOT NULL,
   `rr` varchar(255) NOT NULL,
   `pr` varchar(255) NOT NULL,
@@ -376,9 +364,8 @@ CREATE TABLE IF NOT EXISTS `physicalexams` (
   `admittingDiagnosis` text NOT NULL,
   `finalDiagnosis` text NOT NULL,
   `patientId` varchar(20) NOT NULL,
-  `admittingdetailsid` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+  `admittingdetailsid` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `physicalexams`
@@ -393,13 +380,12 @@ INSERT INTO `physicalexams` (`id`, `bp`, `rr`, `pr`, `t`, `ht`, `ie`, `fuht`, `f
 -- Table structure for table `rapidassesment`
 --
 
-CREATE TABLE IF NOT EXISTS `rapidassesment` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `rapidassesment` (
+  `id` int(10) UNSIGNED NOT NULL,
   `assesment` varchar(255) NOT NULL,
   `patientId` varchar(20) NOT NULL,
-  `admittingdetailsid` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+  `admittingdetailsid` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rapidassesment`
@@ -414,17 +400,16 @@ INSERT INTO `rapidassesment` (`id`, `assesment`, `patientId`, `admittingdetailsi
 -- Table structure for table `rpt`
 --
 
-CREATE TABLE IF NOT EXISTS `rpt` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `rpt` (
+  `id` int(10) UNSIGNED NOT NULL,
   `tprType` varchar(100) NOT NULL,
   `reading` varchar(255) NOT NULL,
   `shift` varchar(50) NOT NULL,
   `dateOfReading` varchar(50) NOT NULL,
   `patientId` varchar(20) NOT NULL,
   `admitId` varchar(20) NOT NULL,
-  `type` varchar(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=7 ;
+  `type` varchar(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `rpt`
@@ -442,17 +427,16 @@ INSERT INTO `rpt` (`id`, `tprType`, `reading`, `shift`, `dateOfReading`, `patien
 -- Table structure for table `speculumexam`
 --
 
-CREATE TABLE IF NOT EXISTS `speculumexam` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `speculumexam` (
+  `id` int(10) UNSIGNED NOT NULL,
   `purulent` varchar(255) NOT NULL,
   `watery` varchar(255) NOT NULL,
   `bleeding` varchar(255) NOT NULL,
   `others` varchar(255) NOT NULL,
   `patientId` varchar(20) NOT NULL,
   `visitId` varchar(20) NOT NULL,
-  `admitId` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `admitId` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `speculumexam`
@@ -467,14 +451,13 @@ INSERT INTO `speculumexam` (`id`, `purulent`, `watery`, `bleeding`, `others`, `p
 -- Table structure for table `subjectiveobservation`
 --
 
-CREATE TABLE IF NOT EXISTS `subjectiveobservation` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `subjectiveobservation` (
+  `id` int(10) UNSIGNED NOT NULL,
   `observation` longtext NOT NULL,
   `patientId` varchar(20) NOT NULL,
   `visitId` varchar(20) NOT NULL,
-  `admitId` varchar(20) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `admitId` varchar(20) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `subjectiveobservation`
@@ -489,16 +472,15 @@ INSERT INTO `subjectiveobservation` (`id`, `observation`, `patientId`, `visitId`
 -- Table structure for table `tpr`
 --
 
-CREATE TABLE IF NOT EXISTS `tpr` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `tpr` (
+  `id` int(10) UNSIGNED NOT NULL,
   `dateOfReading` varchar(50) NOT NULL,
   `weight` varchar(5) NOT NULL,
   `height` varchar(5) NOT NULL,
   `patientId` varchar(20) NOT NULL,
   `admitId` varchar(20) NOT NULL,
-  `type` varchar(1) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=6 ;
+  `type` varchar(1) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `tpr`
@@ -516,14 +498,13 @@ INSERT INTO `tpr` (`id`, `dateOfReading`, `weight`, `height`, `patientId`, `admi
 -- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `users` (
-  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(10) UNSIGNED NOT NULL,
   `fullName` varchar(255) NOT NULL,
   `username` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
-  `userType` varchar(10) NOT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `userType` varchar(10) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
@@ -531,8 +512,214 @@ CREATE TABLE IF NOT EXISTS `users` (
 
 INSERT INTO `users` (`id`, `fullName`, `username`, `password`, `userType`) VALUES
 (1, 'Admin A. Admin', 'admin', 'admin', '1'),
-(3, 'Franky1', 'samaniego', '12345676', '2');
+(4, 'nurse', 'nurse', 'nurse', '2');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `admittingdetails`
+--
+ALTER TABLE `admittingdetails`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `bpus`
+--
+ALTER TABLE `bpus`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `doctorsorder`
+--
+ALTER TABLE `doctorsorder`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `historyofpregnancy`
+--
+ALTER TABLE `historyofpregnancy`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `internalexam`
+--
+ALTER TABLE `internalexam`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `maternalvisits`
+--
+ALTER TABLE `maternalvisits`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `medications`
+--
+ALTER TABLE `medications`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `nurserychart`
+--
+ALTER TABLE `nurserychart`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `objectiveobservation`
+--
+ALTER TABLE `objectiveobservation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `pastmedhistory`
+--
+ALTER TABLE `pastmedhistory`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `patientdata`
+--
+ALTER TABLE `patientdata`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `physicalexams`
+--
+ALTER TABLE `physicalexams`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rapidassesment`
+--
+ALTER TABLE `rapidassesment`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `rpt`
+--
+ALTER TABLE `rpt`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `speculumexam`
+--
+ALTER TABLE `speculumexam`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `subjectiveobservation`
+--
+ALTER TABLE `subjectiveobservation`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `tpr`
+--
+ALTER TABLE `tpr`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `admittingdetails`
+--
+ALTER TABLE `admittingdetails`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `bpus`
+--
+ALTER TABLE `bpus`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+--
+-- AUTO_INCREMENT for table `doctorsorder`
+--
+ALTER TABLE `doctorsorder`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `historyofpregnancy`
+--
+ALTER TABLE `historyofpregnancy`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `internalexam`
+--
+ALTER TABLE `internalexam`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `maternalvisits`
+--
+ALTER TABLE `maternalvisits`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `medications`
+--
+ALTER TABLE `medications`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+--
+-- AUTO_INCREMENT for table `nurserychart`
+--
+ALTER TABLE `nurserychart`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `objectiveobservation`
+--
+ALTER TABLE `objectiveobservation`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
+-- AUTO_INCREMENT for table `pastmedhistory`
+--
+ALTER TABLE `pastmedhistory`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+--
+-- AUTO_INCREMENT for table `patientdata`
+--
+ALTER TABLE `patientdata`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
+-- AUTO_INCREMENT for table `physicalexams`
+--
+ALTER TABLE `physicalexams`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+--
+-- AUTO_INCREMENT for table `rapidassesment`
+--
+ALTER TABLE `rapidassesment`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `rpt`
+--
+ALTER TABLE `rpt`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+--
+-- AUTO_INCREMENT for table `speculumexam`
+--
+ALTER TABLE `speculumexam`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `subjectiveobservation`
+--
+ALTER TABLE `subjectiveobservation`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `tpr`
+--
+ALTER TABLE `tpr`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

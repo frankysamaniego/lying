@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	if(isset($_SESSION['accountType'])){
 	if($_SESSION['accountType'] == 1){
 		header("location:admin/");
 	}else if($_SESSION['accountType'] == 2){
@@ -9,5 +10,5 @@
 	}else{
 		//header("location:index.php");
 	}
-
+	}
 ?>
